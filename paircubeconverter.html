@@ -1,0 +1,340 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CUBE!!!</title>
+    <script>
+        var cardDictionary = {
+            "1 Abbot of Keral Keep": "Abbot of Keral Keep\nMulldrifter",
+            "1 Adarkar Wastes": "Adarkar Wastes\nLlanowar Wastes",
+            "1 Aether Vial": "Aether Vial\nVial Smasher the Fierce",
+            "1 Ajani, Mentor of Heroes": "Ajani, Mentor of Heroes\nAjani Vengeant",
+            "1 Akroma, Angel of Wrath": "Akroma, Angel of Wrath\nAkroma, Angel of Fury",
+            "1 Anger of the Gods": "Anger of the Gods\nWrath of God",
+            "1 Animate Dead": "Animate Dead\nAnimate Library",
+            "1 Ankle Shanker": "Ankle Shanker\nRancor",
+            "1 Archaeomancer": "Archaeomancer\nOphiomancer",
+            "1 Arena": "Arena\nCrash",
+            "1 Ash Zealot": "Ash Zealot\nMisty Rainforest",
+            "1 Ashling the Pilgrim": "Ashling the Pilgrim\nAshling, the Extinguisher",
+            "1 Bane of the Living": "Bane of the Living\nBaneslayer Angel",
+            "1 Batterskull": "Batterskull\nSkullclamp",
+            "1 Battlefield Forge": "Battlefield Forge\nGraveyard Marshal",
+            "1 Beanstalk Giant": "Beanstalk Giant\nGiant Killer",
+            "1 Beast Within": "Beast Within\nBurn from Within",
+            "1 Bitterblossom": "Bitterblossom\nBlossoming Sands",
+            "1 Bloodbraid Elf": "Bloodbraid Elf\nCascade Bluffs",
+            "1 Bloodfell Caves": "Bloodfell Caves\nCaves of Koilos",
+            "1 Bloodstained Mire": "Bloodstained Mire\nTwilight Mire",
+            "1 Bonecrusher Giant": "Bonecrusher Giant\nRealm-Cloaked Giant",
+            "1 Bonesplitter": "Bonesplitter\nThroat Slitter",
+            "1 Botanical Sanctum": "Botanical Sanctum\nArcane Sanctum",
+            "1 Brainstorm": "Brainstorm\nSlagstorm",
+            "1 Breeding Pool": "Breeding Pool\nFetid Pools",
+            "1 Brimaz, King of Oreskos": "Brimaz, King of Oreskos\nOona, Queen of the Fae",
+            "1 Carnage Tyrant": "Carnage Tyrant\nLeyline Tyrant",
+            "1 Cast Down": "Cast Down\nCast Out",
+            "1 Castle Vantress": "Castle Vantress\nMoat",
+            "1 Chain Lightning": "Chain Lightning\nChainer's Edict",
+            "1 Chandra, Torch of Defiance": "Chandra, Torch of Defiance\nBaral, Chief of Compliance",
+            "1 Chart a Course": "Chart a Course\nCourser of Kruphix",
+            "1 Coalition Relic": "Coalition Relic\nRelic of Progenitus",
+            "1 Complicate": "Complicate\nVindicate",
+            "1 Consecrated Sphinx": "Consecrated Sphinx\nKitchen Finks",
+            "1 Counterspell": "Counterspell\nBaron Von Count",
+            "1 Cryptbreaker": "Cryptbreaker\nWorld Breaker",
+            "1 Dack Fayden": "Dack Fayden\nDuress",
+            "1 Damnation": "Damnation\nHellrider",
+            "1 Dark Confidant": "Dark Confidant\nSakura-Tribe Elder",
+            "1 Dark Ritual": "Dark Ritual\nDark Depths",
+            "1 Dauntless Bodyguard": "Dauntless Bodyguard\nBody Double",
+            "1 Day of Judgment": "Day of Judgment\nVampire Nighthawk",
+            "1 Dead Weight": "Dead Weight\nNegate",
+            "1 Deep Forest Hermit": "Deep Forest Hermit\nDeep Analysis",
+            "1 Demonic Tutor": "Demonic Tutor\nAngelic Destiny",
+            "1 Den Protector": "Den Protector\nSneak Attack",
+            "1 Deranged Hermit": "Deranged Hermit\nDeranged Assistant",
+            "1 Desecration Demon": "Desecration Demon\nRestoration Angel",
+            "1 Disenchant": "Disenchant\nDisallow",
+            "1 Disfigure": "Disfigure\nFigure of Destiny",
+            "1 Dismember": "Dismember\nRip Apart",
+            "1 Domri, Chaos Bringer": "Domri, Chaos Bringer\nSoul Diviner",
+            "1 Doom Blade": "Doom Blade\nBlade Splicer",
+            "1 Dragonskull Summit": "Dragonskull Summit\nDragon Hunter",
+            "1 Dream Trawler": "Dream Trawler\nGleancrawler",
+            "1 Elspeth, Knight-Errant": "Elspeth, Knight-Errant\nAshiok, Nightmare Weaver",
+            "1 Elspeth, Sun's Champion": "Elspeth, Sun's Champion\nTamiyo, the Moon Sage",
+            "1 Elvish Mystic": "Elvish Mystic\nStoneforge Mystic",
+            "1 Embercleave": "Embercleave\nLightning Greaves",
+            "1 Entrancing Melody": "Entrancing Melody\nHarmonize",
+            "1 Essence Warden": "Essence Warden\nEssence Scatter",
+            "1 Eternal Dragon": "Eternal Dragon\nEternal Witness",
+            "1 Everflowing Chalice": "Everflowing Chalice\nPoison the Cup",
+            "1 Explore": "Explore\nExpansion \/\/ Explosion",
+            "1 Extremely Slow Zombie": "Extremely Slow Zombie\nVery Cryptic Command (d)",
+            "1 Fact or Fiction": "Fact or Fiction\nMalicious Affliction",
+            "1 Faith's Fetters": "Faith's Fetters\nVedalken Shackles",
+            "1 Faithless Looting": "Faithless Looting\nFaceless Butcher",
+            "1 Feast or Famine": "Feast or Famine\nSword of Feast and Famine",
+            "1 Fiend Hunter": "Fiend Hunter\nFiend Artisan",
+            "1 Fiery Islet": "Fiery Islet\nWatery Grave",
+            "1 Fire": "Fire \/\/Ice\nSword of Fire and Ice",
+            "1 Fireblast": "Fireblast\nBlast Zone",
+            "1 Flametongue Kavu": "Flametongue Kavu\nFoul-Tongue Invocation",
+            "1 Flooded Strand": "Flooded Strand\nFlooded Grove",
+            "1 Frontier Bivouac": "Frontier Bivouac\nFrontline Medic",
+            "1 Frost Bite": "Frost Bite\nFrost Titan",
+            "1 Genesis Wave": "Genesis Wave\nParallax Wave",
+            "1 Gideon Blackblade": "Gideon Blackblade\nJund Hackblade",
+            "1 Giver of Runes": "Giver of Runes\nRune-Scarred Demon",
+            "1 Glorybringer": "Glorybringer\nEndbringer",
+            "1 Go for the Throat": "Go for the Throat\nRabid Bite",
+            "1 Goblin Cratermaker": "Goblin Cratermaker\nCraterhoof Behemoth",
+            "1 Goblin Guide": "Goblin Guide\nKarmic Guide",
+            "1 Goblin Rabblemaster": "Goblin Rabblemaster\nKor Hookmaster",
+            "1 Godless Shrine": "Godless Shrine\nJungle Shrine",
+            "1 Golgari Grave-Troll": "Golgari Grave-Troll\nGrave Titan",
+            "1 Goreclaw, Terror of Qal Sisma": "Goreclaw, Terror of Qal Sisma\nTerror of the Peaks",
+            "1 Graven Cairns": "Graven Cairns\nThe Great Henge",
+            "1 Grim Lavamancer": "Grim Lavamancer\nMaster Biomancer",
+            "1 Guardian Idol": "Guardian Idol\nGuardian Project",
+            "1 Hangarback Walker": "Hangarback Walker\nGore-House Chainwalker",
+            "1 Harsh Mentor": "Harsh Mentor\nMentor of the Meek",
+            "1 Hoarding Dragon": "Hoarding Dragon\nPack Rat",
+            "1 Hornet Queen": "Hornet Queen\nCoffin Queen",
+            "1 Hunted Horror": "Hunted Horror\nHinterland Harbor",
+            "1 Hypnotic Specter": "Hypnotic Specter\nArena Rector",
+            "1 Imperial Recruiter": "Imperial Recruiter\nRecruiter of the Guard",
+            "1 Incinerate": "Incinerate\nInvigorate",
+            "1 Inferno Titan": "Inferno Titan\nPrimeval Titan",
+            "1 Irrigated Farmland": "Irrigated Farmland\nGolgari Rot Farm",
+            "1 Isamaru, Hound of Konda": "Isamaru, Hound of Konda\nAshmouth Hound",
+            "1 Isochron Scepter": "Isochron Scepter\nScepter of Dominance",
+            "1 Izzet Charm": "Izzet Charm\nCharming Prince",
+            "1 Journey to Nowhere": "Journey to Nowhere\nThe Abyss",
+            "1 Karn, Scion of Urza": "Karn, Scion of Urza\nUrza, Academy Headmaster",
+            "1 Knight of Autumn": "Knight of Autumn\nKnight of Infamy",
+            "1 Knight of the Reliquary": "Knight of the Reliquary\nKnight of the Ebon Legion",
+            "1 Kodama's Reach": "Kodama's Reach\nMire's Grasp",
+            "1 Kolaghan's Command": "Kolaghan's Command\nCryptic Command",
+            "1 Kongming, Sleeping Dragon": "Kongming, \"Sleeping Dragon\"\nChandra, Awakened Inferno",
+            "1 Letter of Acceptance": "Letter of Acceptance\nWall of Denial",
+            "1 Lightning Bolt": "Lightning Bolt\nBirds of Paradise",
+            "1 Lightning Helix": "Lightning Helix\nGrowth Spiral",
+            "1 Liliana of the Veil": "Liliana of the Veil\nMerchant of the Vale",
+            "1 Liliana, Dreadhorde General": "Liliana, Dreadhorde General\nLu Xun, Scholar General",
+            "1 Lingering Souls": "Lingering Souls\nSoul-Scar Mage",
+            "1 Lovestruck Beast": "Lovestruck Beast\nHeartless Act",
+            "1 Magma Jet": "Magma Jet\nBasalt Monolith",
+            "1 Magmaw": "Magmaw\nShriekmaw",
+            "1 Man-o'-War": "Man-o'-War\nLlanowar Elves",
+            "1 Mana Leak": "Mana Leak\nManalith",
+            "1 Mana Tithe": "Mana Tithe\nMana Vault",
+            "1 Master of Waves": "Master of Waves\nMaster of the Wild Hunt",
+            "1 Merfolk Looter": "Merfolk Looter\nKitesail Freebooter",
+            "1 Metallic Mimic": "Metallic Mimic\nMimic Vat",
+            "1 Mind Stone": "Mind Stone\nMind Control",
+            "1 Mirri, Weatherlight Duelist": "Mirri, Weatherlight Duelist\nMirri the Cursed",
+            "1 Mirror Entity": "Mirror Entity\nKiki-Jiki, Mirror Breaker",
+            "1 Monastery Swiftspear": "Monastery Swiftspear\nMonastery Mentor",
+            "1 Myr Battlesphere": "Myr Battlesphere\nBall Lightning",
+            "1 Mystic Gate": "Mystic Gate\nMystic Snake",
+            "1 Nahiri, the Harbinger": "Nahiri, the Harbinger\nHarbinger of the Tides",
+            "1 Naturalize": "Naturalize\nElectrolyze",
+            "1 Needle Spires": "Needle Spires\nNeedle Specter",
+            "1 Nicol Bolas, Planeswalker": "Nicol Bolas, Planeswalker\nPrison Realm",
+            "1 Nighthawk Scavenger": "Nighthawk Scavenger\nScavenging Ooze",
+            "1 Nissa, Steward of Elements": "Nissa, Steward of Elements\nNissa of Shadowed Boughs",
+            "1 Nissa, Vital Force": "Nissa, Vital Force\nForce Spike",
+            "1 Nissa, Voice of Zendikar": "Nissa, Voice of Zendikar\nGideon, Ally of Zendikar",
+            "1 Nomad Outpost": "Nomad Outpost\nTrading Post",
+            "1 Noxious Gearhulk": "Noxious Gearhulk\nNoxious Revival",
+            "1 Oblivion Ring": "Oblivion Ring\nOblivion Stone",
+            "1 Oko, Thief of Crowns": "Oko, Thief of Crowns\nGlimmerpoint Stag",
+            "1 Opulent Palace": "Opulent Palace\nPalace Jailer",
+            "1 Overrun": "Overrun\nUndermine",
+            "1 Path to Exile": "Path to Exile\nDragonmaster Outcast",
+            "1 Pelt Collector": "Pelt Collector\nSin Collector",
+            "1 Pernicious Deed": "Pernicious Deed\nBlasphemous Act",
+            "1 Phyrexian Metamorph": "Phyrexian Metamorph\nPhyrexian Arena",
+            "1 Phyrexian Reclamation": "Phyrexian Reclamation\nReclamation Sage",
+            "1 Phyrexian Revoker": "Phyrexian Revoker\nRevoke Existence",
+            "1 Plateau": "Plateau\nRise \/\/ Fall",
+            "1 Plated Geopede": "Plated Geopede\nVorapede",
+            "1 Polluted Delta": "Polluted Delta\nRegisaur Alpha",
+            "1 Polukranos, World Eater": "Polukranos, World Eater\nDream Eater",
+            "1 Ponder": "Ponder\nThe Wanderer",
+            "1 Porcelain Legionnaire": "Porcelain Legionnaire\nLegion's End",
+            "1 Preordain": "Preordain\nAs Foretold",
+            "1 Pull from Tomorrow": "Pull from Tomorrow\nFatal Push",
+            "1 Puppeteer Clique": "Puppeteer Clique\nVendilion Clique",
+            "1 Raging Ravine": "Raging Ravine\nCharix, the Raging Isle",
+            "1 Rakdos Cackler": "Rakdos Cackler\nIndrik Stomphowler",
+            "1 Ravenous Chupacabra": "Ravenous Chupacabra\nVoracious Hydra",
+            "1 Razorverge Thicket": "Razorverge Thicket\nFire-Lit Thicket",
+            "1 Reality Acid": "Reality Acid\nAcidic Slime",
+            "1 Remand": "Remand\nCondemn",
+            "1 Remorseful Cleric": "Remorseful Cleric\nAgonizing Remorse",
+            "1 Rite of Replication": "Rite of Replication\nUnburial Rites",
+            "1 Rootbound Crag": "Rootbound Crag\nGlory-Bound Initiate",
+            "1 Rugged Prairie": "Rugged Prairie\nPrairie Stream",
+            "1 Rumbling Slum": "Rumbling Slum\nCrumbling Necropolis",
+            "1 Sacred Foundry": "Sacred Foundry\nSoul Foundry",
+            "1 Sakashima's Student": "Sakashima's Student\nStudent of Warfare",
+            "1 Sandsteppe Citadel": "Sandsteppe Citadel\nSeaside Citadel",
+            "1 Sarkhan, the Dragonspeaker": "Sarkhan, the Dragonspeaker\nGarruk Wildspeaker",
+            "1 Savage Lands": "Savage Lands\nEnlightened Tutor",
+            "1 Scattered Groves": "Scattered Groves\nGrove of the Burnwillows",
+            "1 Scoured Barrens": "Scoured Barrens\nBarrin, Tolarian Archmage",
+            "1 Scrubland": "Scrubland\nReject",
+            "1 Sea Gate Oracle": "Sea Gate Oracle\nOracle of Mul Daya",
+            "1 Seachrome Coast": "Seachrome Coast\nCoastline Marauders",
+            "1 Searing Spear": "Searing Spear\nSpear of Heliod",
+            "1 Selesnya Sanctuary": "Selesnya Sanctuary\nMystic Sanctuary",
+            "1 Selfless Spirit": "Selfless Spirit\nSelfie Preservation",
+            "1 Shambling Vent": "Shambling Vent\nSteam Vents",
+            "1 Sheltered Thicket": "Sheltered Thicket\nShelter",
+            "1 Shivan Reef": "Shivan Reef\nRisen Reef",
+            "1 Siege-Gang Commander": "Siege-Gang Commander\nCoralhelm Commander",
+            "1 Sigarda, Host of Herons": "Sigarda, Host of Herons\nDreamtail Heron",
+            "1 Silent Arbiter": "Silent Arbiter\nSilent Clearing",
+            "1 Skarrgan Hellkite": "Skarrgan Hellkite\nSpellskite",
+            "1 Skinrender": "Skinrender\nHeartmender",
+            "1 Skinshifter": "Skinshifter\nGraveshifter",
+            "1 Smash": "Smash\nMouth \/\/ Feed",
+            "1 Snapcaster Mage": "Snapcaster Mage\nDualcaster Mage",
+            "1 Song of the Dryads": "Song of the Dryads\nHymn to Tourach",
+            "1 Sorin, Lord of Innistrad": "Sorin, Lord of Innistrad\nYorvo, Lord of Garenbrig",
+            "1 Sorin, Solemn Visitor": "Sorin, Solemn Visitor\nSolemn Simulacrum",
+            "1 Sower of Temptation": "Sower of Temptation\nMidnight Reaper",
+            "1 Spell Burst": "Spell Burst\nBurst Lightning",
+            "1 Sphinx's Revelation": "Sphinx's Revelation\nShamanic Revelation",
+            "1 Stormfront Pegasus": "Stormfront Pegasus\nStormblood Berserker",
+            "1 Stromkirk Noble": "Stromkirk Noble\nFalkenrath Noble",
+            "1 Stunt Double": "Stunt Double\nDoubling Season",
+            "1 Sulfurous Springs": "Sulfurous Springs\nSulfur Falls",
+            "1 Sun Titan": "Sun Titan\nSun Quan, Lord of Wu",
+            "1 Sunbaked Canyon": "Sunbaked Canyon\nCanyon Slough",
+            "1 Sunken Hollow": "Sunken Hollow\nJungle Hollow",
+            "1 Sunken Ruins": "Sunken Ruins\nForeboding Ruins",
+            "1 Sunpetal Grove": "Sunpetal Grove\nWaterlogged Grove",
+            "1 Survival of the Fittest": "Survival of the Fittest\nEvolving Wilds",
+            "1 Swords to Plowshares": "Swords to Plowshares\nCultivate",
+            "1 Talisman of Conviction": "Talisman of Conviction\nConviction",
+            "1 Talisman of Creativity": "Talisman of Creativity\nAngel of Invention",
+            "1 Talisman of Curiosity": "Talisman of Curiosity\nCuriosity",
+            "1 Talisman of Dominance": "Talisman of Dominance\nElectrodominance",
+            "1 Talisman of Hierarchy": "Talisman of Hierarchy\nNoble Hierarch",
+            "1 Talisman of Impulse": "Talisman of Impulse\nImpulse",
+            "1 Talisman of Indulgence": "Talisman of Indulgence\nGonti, Lord of Luxury",
+            "1 Talisman of Progress": "Talisman of Progress\nRegress",
+            "1 Talisman of Resilience": "Talisman of Resilience\nResilient Khenra",
+            "1 Talisman of Unity": "Talisman of Unity\nOf One Mind",
+            "1 Teferi, Hero of Dominaria": "Teferi, Hero of Dominaria\nHero of Oxid Ridge",
+            "1 Teferi, Master of Time": "Teferi, Master of Time\nRankle, Master of Pranks",
+            "1 Teferi, Time Raveler": "Teferi, Time Raveler\nXenagos, the Reveler",
+            "1 Temple of Abandon": "Temple of Abandon\nWinds of Abandon",
+            "1 Temple of Epiphany": "Temple of Epiphany\nEureka",
+            "1 Temple of Triumph": "Temple of Triumph\nLiliana's Triumph",
+            "1 Terminate": "Terminate\nDismiss",
+            "1 Terramorphic Expanse": "Terramorphic Expanse\nPolymorphist's Jest",
+            "1 Thief of Sanity": "Thief of Sanity\nRobber of the Rich",
+            "1 Thoughtseize": "Thoughtseize\nFlashfreeze",
+            "1 Three Visits": "Three Visits\nEight-and-a-Half-Tails",
+            "1 Thrun, the Last Troll": "Thrun, the Last Troll\nLiliana, the Last Hope",
+            "1 Tormenting Voice": "Tormenting Voice\nVoice of Resurgence",
+            "1 Torrential Gearhulk": "Torrential Gearhulk\nVerdurous Gearhulk",
+            "1 Treasure Cruise": "Treasure Cruise\nFleetwheel Cruiser",
+            "1 Treasure Hunt": "Treasure Hunt\nTreasured Find",
+            "1 Tropical Island": "Tropical Island\nVicious Conquistador",
+            "1 Tundra": "Tundra\nTundra Fumarole",
+            "1 Turn to Frog": "Turn to Frog\nTurn to Slag",
+            "1 Ulamog, the Ceaseless Hunger": "Ulamog, the Ceaseless Hunger\nBloodchief's Thirst",
+            "1 Underground River": "Underground River\nOvergrown Tomb",
+            "1 Vampire Hexmage": "Vampire Hexmage\nHexdrinker",
+            "1 Venser, Shaper Savant": "Venser, Shaper Savant\nDaretti, Scrap Savant",
+            "1 Verdant Catacombs": "Verdant Catacombs\nDrowned Catacomb",
+            "1 Volcanic Island": "Volcanic Island\nLavabrink Venturer",
+            "1 Walking Ballista": "Walking Ballista\nStalking Leonin",
+            "1 Wall of Omens": "Wall of Omens\nWall of Blossoms",
+            "1 Windswept Heath": "Windswept Heath\nFetid Heath",
+            "1 Wooded Foothills": "Wooded Foothills\nWooded Bastion",
+            "1 Woodland Cemetery": "Woodland Cemetery\nMystic Monastery",
+            "1 Wrenn and Six": "Wrenn and Six\nBaleful Strix",
+            "1 Wurmcoil Engine": "Wurmcoil Engine\nCoiling Oracle",
+            "1 Young Pyromancer": "Young Pyromancer\nElder Gargaroth",
+            "1 Zurgo Bellstriker": "Zurgo Bellstriker\nSinging Bell Strike"
+        };
+
+        function doPairing()
+        {
+            // Get the input from the text box
+            var input = document.getElementById("inputCube").value;
+
+            // Split it into individual cards and put that into a list
+            var cards = input.split(/[(\n)|(\r\n)]/);
+
+            // Create the empty output array
+            var output = [];
+
+            // Iterate through the list
+            cards.forEach(card => {
+                
+                var pairCard = cardDictionary[card];
+                if (pairCard !== undefined) {
+                    output.push(pairCard);
+                }
+            });
+
+            output = output.join("\n"); // Turn the output array into a list broken into separate lines
+            document.getElementById("outputCube").value = output; // Write the output cards to the output text box
+        }
+    </script>
+</head>
+<style>
+.section {
+    text-align: center;
+    border: 1px solid #000000;
+    margin: 15px 0px;
+    padding: 15px 5px;
+    background-color: #eaeaea;
+}
+
+.punch {
+  background: #4162a8;
+  border-top: 1px solid #38538c;
+  border-right: 1px solid #1f2d4d;
+  border-bottom: 1px solid #151e33;
+  border-left: 1px solid #1f2d4d;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 6px 0 #1f3053, 0 8px 4px 1px #111111;
+  box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 6px 0 #1f3053, 0 8px 4px 1px #111111;
+  color: #fff;
+  font: bold 20px/1 "helvetica neue", helvetica, arial, sans-serif;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 10px 10px 12px 10px;
+  text-align: center;
+  text-shadow: 0 -1px 1px #1e2d4d;
+  -webkit-background-clip: padding-box; }
+  .punch:hover {
+    -webkit-box-shadow: inset 0 0 20px 1px #87adff, 0 1px 0 #1d2c4d, 0 6px 0 #1f3053, 0 8px 4px 1px #111111;
+    box-shadow: inset 0 0 20px 1px #87adff, 0 1px 0 #1d2c4d, 0 6px 0 #1f3053, 0 8px 4px 1px #111111;
+    cursor: pointer; }
+  .punch:active {
+    -webkit-box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
+    box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
+    margin-top: 8px; }
+</style>
+
+<body>
+<div class="section">
+    <textarea id="inputCube" name="inputCube" rows="10" cols="70"></textarea>
+
+    <input class="punch" type="button" value="GET PAIRS" onclick="doPairing()">
+
+    <textarea id="outputCube" name="outputCube" rows="10" cols="70"></textarea>
+</div>
+</body>
+</html>
